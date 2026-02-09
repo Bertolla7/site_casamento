@@ -1,0 +1,249 @@
+:root {
+    --primary: #8a9a5b;
+    --background: #fafafa;
+    --text: #2f2f2f;
+    --card: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--background);
+    color: var(--text);
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: linear-gradient(120deg, #eaeaea, #d6d6d6);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+}
+
+.hero-content {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+/* BUTTON */
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    opacity: 0.85;
+}
+
+/* RSVP */
+.rsvp {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background: var(--card);
+    padding: 30px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+label {
+    font-size: 0.9rem;
+    margin-top: 15px;
+    display: block;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+}
+
+button {
+    width: 100%;
+    margin-top: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+/* PRESENTES */
+.presentes {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.gift-card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+}
+
+.gift-card:hover {
+    transform: translateY(-5px);
+}
+
+.gift-card span {
+    display: block;
+    font-weight: 600;
+    margin: 15px 0;
+}
+
+.gift-card button {
+    background: var(--primary);
+    color: white;
+    padding: 12px;
+    border-radius: 25px;
+}
+
+/* UTIL */
+.hidden {
+    display: none;
+}
+
+/* PAGAMENTO */
+
+.pagamento {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.tabs {
+    display: flex;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background: #f2f2f2;
+    cursor: pointer;
+}
+
+.tab.active {
+    background: var(--primary);
+    color: white;
+    border: none;
+}
+
+.qrcode {
+    background: #eee;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    margin: 15px 0;
+    font-weight: 600;
+}
+
+
+/* Ajuste mobile */
+
+@media (max-width: 768px) {
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+    }
+
+    .card {
+        padding: 25px 20px;
+        border-radius: 16px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 16px;
+        font-size: 1rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gift-card {
+        padding: 22px;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .tab {
+        width: 100%;
+    }
+}
+
+
+/* CONTROLE DE ETAPAS (WIZARD) */
+.etapa {
+    opacity: 0.3;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.etapa.ativa {
+    opacity: 1;
+    pointer-events: auto;
+}
+

@@ -1,0 +1,12 @@
+# Dependências
+node_modules/
+backend/node_modules/
+
+# Variáveis de ambiente
+.env
+.env.local
+.env.production
+
+# Sistema
+.DS_Store
+Thumbs.db
