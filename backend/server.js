@@ -1,48 +1,32 @@
-const express = require('express');
-const cors = require('cors');
-const mercadopago = require('mercadopago');
+import mercadopago from "mercadopago";
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+export default async function handler(req, res) {
 
-mercadopago.configure({
-    access_token: 'SEU_ACCESS_TOKEN_AQUI'
-});
+    if (req.method !== "POST") {
+        return res.status(405).json({ error: "Method not allowed" });
+    }
 
-// ROTA PARA CRIAR PAGAMENTO
-app.post('/api/createPreference', async (req, res) => {
-    const { presente, valor } = req.body;
+    const preference = {
+        items: [
+            {
+                title: "Presente Casamento",
+                quantity: 1,
+                unit_price: 120
+            }
+        ],
+        back_urls: {
+            success: "https://sitecasamento-nu.vercel.app/sucesso.html",
+            failure: "https://sitecasamento-nu.vercel.app/erro.html",
+            pending: "https://sitecasamento-nu.vercel.app/pendente.html"
+        },
+        auto_return: "approved"
+    };
 
     try {
-        const preference = {
-            items: [
-                {
-                    title: presente,
-                    quantity: 1,
-                    currency_id: 'BRL',
-                    unit_price: Number(valor)
-                }
-            ],
-            back_urls: {
-                success: 'http://localhost:3000/sucesso.html',
-                failure: 'http://localhost:3000/erro.html',
-                pending: 'http://localhost:3000/pendente.html'
-            },
-            auto_return: 'approved'
-        };
-
         const response = await mercadopago.preferences.create(preference);
-        res.json({ init_point: response.body.init_point });
-
+        res.status(200).json({ id: response.body.id });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ erro: 'Erro ao criar pagamento' });
+        res.status(500).json({ error: error.message });
     }
-});
-
-app.listen(3000, () => {
-    console.log('Servidor rodando na porta 3000');
-});
-
-
+}
+        
