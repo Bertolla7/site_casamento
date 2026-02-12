@@ -1,9 +1,11 @@
 export default async function handler(req, res) {
+
     if (req.method !== "POST") {
         return res.status(405).json({ error: "Método não permitido" });
     }
 
     const { presente, valor } = req.body;
+
     if (!presente || !valor) {
         return res.status(400).json({ error: "Dados inválidos" });
     }
@@ -34,13 +36,16 @@ export default async function handler(req, res) {
         });
 
         const data = await response.json();
-        if (!data || !data.init_point) {
-            return res.status(502).json({ error: "Invalid response from Mercado Pago", body: data });
+
+        if (!data.init_point) {
+            console.error(data);
+            return res.status(500).json({ error: "Erro ao criar pagamento" });
         }
 
         return res.status(200).json({ init_point: data.init_point });
+
     } catch (error) {
-        console.error("createPreference error:", error);
-        return res.status(500).json({ error: "Erro ao criar pagamento", details: String(error) });
+        console.error(error);
+        return res.status(500).json({ error: "Erro interno no servidor" });
     }
 }

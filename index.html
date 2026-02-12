@@ -4,98 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maria Eduarda & Rafael</title>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- ================= ETAPA 1 – HERO ================= -->
-<section class="hero etapa ativa" id="etapa-1">
-    <div class="overlay"></div>
-    <div class="hero-content">
-        <h1>Maria Eduarda & Rafael</h1>
-        <p>Estamos muito felizes em celebrar esse momento com você</p>
-        <a href="#rsvp" class="btn-primary">Confirmar Presença</a>
-    </div>
-</section>
-
-<!-- ================= ETAPA 1 – RSVP ================= -->
-<section id="rsvp" class="rsvp etapa ativa">
-    <div class="card">
-        <h2>Confirmação de Presença</h2>
-
-        <form id="rsvpForm">
-            <label>Nome completo</label>
-            <input type="text" id="nome" required placeholder="Digite seu nome">
-
-            <label>Você poderá comparecer?</label>
-            <select id="presenca" required>
-                <option value="">Selecione</option>
-                <option value="sim">Sim, estarei presente</option>
-                <option value="nao">Infelizmente não poderei ir</option>
-                <option value="talvez">Talvez, ainda não sei</option>
-            </select>
-
-            <label>Quantidade de pessoas</label>
-            <input type="number" id="quantidade" min="1" max="10" placeholder="Ex: 2">
-
-            <button type="submit" class="btn-primary">
-                💍 Confirmar Presença
-            </button>
-        </form>
-    </div>
-</section>
-
-<!-- ================= ETAPA 2 – PRESENTES ================= -->
-<section class="presentes etapa hidden" id="presentes">
+<section class="presentes">
     <h2>Lista de Presentes</h2>
 
-    <div class="grid">
-        <div class="gift-card">
-            <h3>🍽️ Jantar Romântico</h3>
-            <p>Um momento especial para os noivos</p>
-            <span data-valor="120">R$ 120,00</span>
-            <button class="btn-presentear">Presentear</button>
-        </div>
-
-        <div class="gift-card">
-            <h3>✈️ Lua de Mel</h3>
-            <p>Ajude a criar memórias inesquecíveis</p>
-            <span data-valor="80">R$ 80,00</span>
-            <button class="btn-presentear">Presentear</button>
-        </div>
-
-        <div class="gift-card">
-            <h3>🏠 Novo Lar</h3>
-            <p>Contribuição para o nosso começo</p>
-            <span data-valor="150">R$ 150,00</span>
-            <button class="btn-presentear">Presentear</button>
-        </div>
+    <div class="gift-card">
+        <h3>🍽️ Jantar Romântico</h3>
+        <span data-valor="120">R$ 120,00</span>
+        <button class="btn-presentear">Presentear</button>
     </div>
+
+    <div class="gift-card">
+        <h3>✈️ Lua de Mel</h3>
+        <span data-valor="80">R$ 80,00</span>
+        <button class="btn-presentear">Presentear</button>
+    </div>
+
 </section>
 
-<!-- ================= ETAPA 3 – PAGAMENTO ================= -->
-<section class="pagamento etapa hidden" id="pagamento">
-    <div class="card">
-        <h2>Finalizar Presente</h2>
+<section class="pagamento hidden" id="pagamento">
+    <h2>Finalizar Presente</h2>
+    <p id="presenteEscolhido"></p>
+    <strong id="valorEscolhido"></strong>
 
-        <p id="presenteEscolhido"></p>
-        <strong id="valorEscolhido"></strong>
-
-        <!-- BOTÃO USADO PELO MERCADO PAGO -->
-        <button id="btnPagar" class="btn-primary">
-            💳 Pagar com Mercado Pago
-        </button>
-    </div>
+    <button id="btnPagar">
+        💳 Pagar com Mercado Pago
+    </button>
 </section>
 
-<!-- ================= JS ================= -->
 <script src="js/script.js"></script>
-
 </body>
 </html>
-
