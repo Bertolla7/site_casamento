@@ -50,14 +50,17 @@ btnPagar.addEventListener("click", async function () {
 // helper: esconde o segmento de hero/overlay completo
 function hideHero() {
     console.log("hideHero called");
+
     const heroSection = document.querySelector(".hero");
+
     if (heroSection) {
-        heroSection.classList.add("hidden");
-        // também definimos display none diretamente e removemos mais tarde
-        heroSection.style.display = 'none';
-        // optional remove from DOM to avoid any pointer-area
-        // heroSection.remove();
+        heroSection.style.display = "none";
+        heroSection.style.opacity = "0";
+        heroSection.style.pointerEvents = "none";
     }
+
+    document.body.style.opacity = "1";
+
     // remove quaisquer overlays remanescentes
     const overlays = document.querySelectorAll('.overlay');
     overlays.forEach(o => {
