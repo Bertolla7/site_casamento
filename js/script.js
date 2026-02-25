@@ -46,3 +46,44 @@ btnPagar.addEventListener("click", async function () {
         console.error(err);
     }
 });
+
+// =========================
+// RSVP FORM HANDLING
+// =========================
+const rsvpForm = document.getElementById("rsvpForm");
+
+if (rsvpForm) {
+    rsvpForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const nome = document.getElementById("nome").value.trim();
+        const presenca = document.getElementById("presenca").value;
+        const quantidade = document.getElementById("quantidade").value;
+
+        if (!nome || !presenca) {
+            alert("Por favor, preencha seu nome e escolha sua presença.");
+            return;
+        }
+
+        // Exemplo de envio para servidor poderia ser adicionado aqui
+        // fetch('/api/rsvp', { method: 'POST', body: ... });
+
+        // Feedback para o usuário
+        alert(`Obrigado, ${nome}! Sua resposta foi registrada.`);
+
+        // se estiver indo, mostrar lista de presentes
+        if (presenca === "sim") {
+            const presentesSection = document.getElementById("presentes");
+            if (presentesSection) {
+                presentesSection.classList.remove("hidden");
+                presentesSection.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
+        // opcional: esconder o formulário/etapa
+        const rsvpSection = document.getElementById("rsvp");
+        if (rsvpSection) {
+            rsvpSection.classList.add("hidden");
+        }
+    });
+}
