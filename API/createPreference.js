@@ -27,9 +27,9 @@ export default async function handler(req, res) {
                     }
                 ],
                 back_urls: {
-                    success: "https://sitecasamento-nu.vercel.app/sucesso.html",
-                    failure: "https://sitecasamento-nu.vercel.app/erro.html",
-                    pending: "https://sitecasamento-nu.vercel.app/pendente.html"
+                    success: "https://sitecasamento2.vercel.app/sucesso.html",
+                    failure: "https://sitecasamento2.vercel.app/erro.html",
+                    pending: "https://sitecasamento2.vercel.app/pendente.html"
                 },
                 auto_return: "approved"
             })
