@@ -53,6 +53,18 @@ function hideHero() {
     if (heroSection) {
         heroSection.classList.add("hidden");
     }
+
+    // fallback: também garantir que qualquer overlay não bloqueie interações
+    const overlays = document.querySelectorAll('.overlay');
+    overlays.forEach(o => {
+        try {
+            o.style.display = 'none';
+            o.style.pointerEvents = 'none';
+            o.style.opacity = '0';
+        } catch (err) {
+            // ignore
+        }
+    });
 }
 
 // Se a hash da URL já for #rsvp (usuário clicou no link ou recarregou), remova o hero
