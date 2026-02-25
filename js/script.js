@@ -85,5 +85,11 @@ if (rsvpForm) {
         if (rsvpSection) {
             rsvpSection.classList.add("hidden");
         }
+
+        // ocultar também o hero/overlay para liberar clique
+        const heroSection = document.querySelector(".hero");
+        if (heroSection) {
+            heroSection.classList.add("hidden");
+        }
     });
 }
