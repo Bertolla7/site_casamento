@@ -37,24 +37,25 @@ btnPagar.addEventListener("click", async function () {
         if (!data.init_point) {
             alert("Erro ao iniciar pagamento");
             return;
+        }
+
+        window.location.href = data.init_point;
+
+    } catch (err) {
+        alert("Erro de conexão com o servidor");
+        console.error(err);
+    }
+});
+
+// helper: esconde o segmento de hero/overlay completo
+function hideHero() {
     const heroSection = document.querySelector(".hero");
     if (heroSection) {
         heroSection.classList.add("hidden");
     }
-    // fallback: também garantir que qualquer overlay não bloqueie interações
-    const overlays = document.querySelectorAll('.overlay');
-    overlays.forEach(o => {
-        try {
-            o.style.display = 'none';
-            o.style.pointerEvents = 'none';
-            o.style.opacity = '0';
-        } catch (err) {
-            // ignore
-        }
-    });
+}
 
-    // fallback: também garantir que qualquer overlay não bloqueie interações
-    const overlays = document.querySelectorAll('.overlay');
+// Se a hash da URL já for #rsvp (usuário clicou no link ou recarregou), remova o hero
 if (window.location.hash === "#rsvp") {
     hideHero();
 }
