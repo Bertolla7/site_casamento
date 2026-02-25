@@ -47,6 +47,27 @@ btnPagar.addEventListener("click", async function () {
     }
 });
 
+// helper: esconde o segmento de hero/overlay completo
+function hideHero() {
+    const heroSection = document.querySelector(".hero");
+    if (heroSection) {
+        heroSection.classList.add("hidden");
+    }
+}
+
+// Se a hash da URL já for #rsvp (usuário clicou no link ou recarregou), remova o hero
+if (window.location.hash === "#rsvp") {
+    hideHero();
+}
+
+// link presente no hero que leva ao formulário; ao clicar tiramos o overlay mesmo que ele não envie nada
+const heroLink = document.querySelector(".hero .btn-primary[href='#rsvp']");
+if (heroLink) {
+    heroLink.addEventListener("click", function () {
+        hideHero();
+    });
+}
+
 // =========================
 // RSVP FORM HANDLING
 // =========================
@@ -87,9 +108,6 @@ if (rsvpForm) {
         }
 
         // ocultar também o hero/overlay para liberar clique
-        const heroSection = document.querySelector(".hero");
-        if (heroSection) {
-            heroSection.classList.add("hidden");
-        }
+        hideHero();
     });
 }
